@@ -1,0 +1,60 @@
+---
+
+- name: "Add UbuntuGIS repo"
+  become: yes
+  become_user: root
+  apt_repository: repo="ppa:ubuntugis/ubuntugis-unstable" state=present
+
+- name: Install Basic Libraries
+  become: yes
+  become_user: root
+  apt: name="{{ item }}" state=latest
+  with_items:
+    - libxml2-dev
+    - libxslt1-dev
+    - libjpeg-dev
+    - gettext
+
+- name: Install GIS Libraries
+  become: yes
+  become_user: root
+  apt: name="{{ item }}" state=latest
+  with_items:
+    #- libgdal1h # Not required for GeoNode in Ubuntu 16.04 LTS
+    #- numpy-dev # Not required for GeoNode development, but maybe for downstream projects
+    - libgdal-dev
+    - libgeos-dev
+    #- libgeos-c1  # see https://groups.google.com/forum/#!topic/cartodb/CuDJs5Nm0ww
+    - libgeos-c1v5  # see https://groups.google.com/forum/#!topic/cartodb/CuDJs5Nm0ww
+    - libpq-dev
+    #- libsqlite3-mod-spatialite  # Not default.  If using Django spatialite backend, install this.
+
+- name: Install Other Libraries
+  become: yes
+  become_user: root
+  apt: name="{{ item }}" state=latest
+  with_items:
+    - transifex-client
+
+- name: Install Python Libraries (via APT)
+  become: yes
+  become_user: root
+  apt: name="{{ item }}" state=latest
+  with_items:
+    - python-gdal
+    - python-lxml
+    - python-psycopg2
+    - python-django
+    - python-bs4
+    - python-multipartposthandler
+    - python-nose
+    - python-django-nose
+    - python-django-pagination
+
+- name: Install Python Libraries (via PIP)
+  become: yes
+  become_user: root
+  pip: name="{{ item }}" state=latest
+  with_items:
+    - virtualenvwrapper
+    - paver

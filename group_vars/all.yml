@@ -1,0 +1,17 @@
+---
+
+# common_java_ubuntu
+PACKAGES_JAVA:
+  - "openjdk-8-jdk"
+
+ALTERNATIVE_JAVA: "/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java"
+
+# common_venv_ubuntu
+VENV_NAME: geonode
+VENV_PATH: "/home/vagrant/.venvs/geonode"
+
+# usaid_nepal_geonode
+PIP_VERSION: "8.1.1"
+POSTGIS_VERSION: "( 2, 0, 6 )"
+GDAL_VERSION: "2.1.0"
+GDAL_SOURCE: "https://pypi.python.org/packages/d1/98/27fff31ad298f3ec50db19dc3adfd8387279e158b1c6331c531c5fc7d830/GDAL-2.1.0.tar.gz"
