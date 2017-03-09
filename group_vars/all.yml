@@ -10,7 +10,7 @@ ALTERNATIVE_JAVA: "/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java"
 VENV_NAME: geonode
 VENV_PATH: "/home/vagrant/.venvs/geonode"
 
-# usaid_nepal_geonode
+# ftf_geonode
 PIP_VERSION: "8.1.1"
 POSTGIS_VERSION: "( 2, 0, 6 )"
 GDAL_VERSION: "2.1.0"

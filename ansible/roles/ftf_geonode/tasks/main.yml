@@ -39,8 +39,8 @@
   args:
     chdir: "/home/vagrant"
 
-- name: "Install USAID Nepal GeoNode as Editable"
-  shell: "{{ VENV_PATH }}/bin/pip install -e usaid_nepal_geonode.git"
+- name: "Install FTF GeoNode as Editable"
+  shell: "{{ VENV_PATH }}/bin/pip install -e ftf_geonode.git"
   args:
     chdir: "/home/vagrant"
 

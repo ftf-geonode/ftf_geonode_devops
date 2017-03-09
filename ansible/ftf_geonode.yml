@@ -1,6 +1,6 @@
 ---
 
-- name: Creates a development virtual machine for the USAID Nepal GeoNode
+- name: Creates a development virtual machine for the FTF GeoNode
   hosts: all
   remote_user: vagrant
 
@@ -10,4 +10,4 @@
     - common_webserver_django_ubuntu  # Installs dependencies, and configures uwsgi service
     - common_webserver_proxy_ubuntu  # Installs NGINX, and configures service
     - common_venv_ubuntu
-    - usaid_nepal_geonode
+    - ftf_geonode
