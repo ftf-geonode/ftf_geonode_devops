@@ -3,7 +3,33 @@
 - name: Creates a development virtual machine for the FTF GeoNode
   hosts: all
   remote_user: vagrant
-
+  gather_facts: False
+  pre_tasks:
+    - name: Install python for Ansible
+      become: yes
+      become_user: root
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+    - name: 'Reconfigue Locales'
+      become: yes
+      become_user: root
+      shell: "{{ item }}"
+      with_items:
+        - "export LANGUAGE=en_US.UTF-8"
+        - "export LANG=en_US.UTF-8"
+        - "export LC_ALL=en_US.UTF-8"
+        - "locale-gen --purge en_US.UTF-8"
+        - "echo 'LANG=en_US.UTF-8\nLANGUAGE=en_US:en\n' > /etc/default/locale"
+        #- "dpkg-reconfigure locales"
+    - name: "Install cul, vim, and unzip"
+      become: yes
+      become_user: root
+      apt: name="{{ item }}" state=latest
+      with_items:
+        - curl
+        - vim
+        - unzip
+    - setup: # aka gather_facts
   roles:
     - common_base_ubuntu  # Installs basic libraries, including GCC, PIP
     - common_java_ubuntu # Installs Java

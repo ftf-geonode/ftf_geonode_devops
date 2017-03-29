@@ -11,11 +11,13 @@ Vagrant.configure(2) do |config|
 
   config.vm.synced_folder "~/workspaces/ftf-geonode/ftf_geonode.git", "/home/vagrant/ftf_geonode.git"
   config.vm.synced_folder "~/workspaces/public/geonode.git", "/home/vagrant/geonode.git"
+  #config.vm.synced_folder "~/workspaces/public/geodash-viewer.git", "/home/vagrant/geodash-viewer.git"
 
   config.vm.provider "virtualbox" do |vb|\
       vb.gui = false
       vb.cpus = 2
-      vb.memory = 4096
+      #vb.memory = 4096
+      vb.memory = 8192
   end
 
   config.vm.provision "ansible" do |ansible|
