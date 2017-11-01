@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 8000, host: 8000
   config.vm.network "forwarded_port", guest: 8080, host: 8080
 
-  config.vm.synced_folder "~/workspaces/ftf-geonode/ftf_geonode.git", "/home/vagrant/ftf_geonode.git"
+  config.vm.synced_folder "~/workspaces/usaid-geonode/ftf_geonode.git", "/home/vagrant/ftf_geonode.git"
   config.vm.synced_folder "~/workspaces/public/geonode.git", "/home/vagrant/geonode.git"
   #config.vm.synced_folder "~/workspaces/public/geodash-viewer.git", "/home/vagrant/geodash-viewer.git"
 
@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/ftf_geonode.yml"
+    ansible.playbook = "ansible/usaid_geonode.yml"
     ansible.host_key_checking = false
     ansible.verbose = "v"
     ansible.raw_arguments = []
